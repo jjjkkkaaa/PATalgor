@@ -1,11 +1,11 @@
 #include "stdio.h"
 char most(int a, int b, int c) {
-  int tmp = a >= b ? a : b;
+  int tmp = b >= a ? b : a;
    if(tmp >= c){
-     if (tmp == a) {
-       return 'C';
-     } else {
+     if (tmp == b) {
        return 'B';
+     } else {
+       return 'C';
      }
    }
    if(tmp < c) {return 'J';}
@@ -41,6 +41,6 @@ int main(int argc, char const *argv[]) {
   }
   printf("%d %d %d\n", win, equal, lose);
   printf("%d %d %d\n", lose, equal, win);
-  printf("%c %c", most(c,_b,j), most(c1,b1,j1));
+  printf("%c %c", most(c, _b, j), most(c1, b1, j1));
   return 0;
 }
