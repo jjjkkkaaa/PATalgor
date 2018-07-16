@@ -36,16 +36,27 @@ int main(int argc, char const *argv[]) {
 
   }
   v2.assign(l.begin(), l.end());
-  reverse(v2.begin(), v2.begin() + k);
-  if (v2.size()/2 >= k) {
-    reverse(v2.begin() + k, v2.end());
-  }
-  for(vector<Node>::iterator it = v2.begin(); it != v2.end(); it++) {
-    it->next = (it+1)->add;
-    if (it == v2.end() - 1) {
-      it->next = "-1";
+  for(int i = k - 1; i >= 0; i--) {
+    if (i == 0) {
+      v2[i].next = v2[k].add;
+      cout << v2[i].add <<" "<< v2[i].data <<" "<< v2[i].next << endl;
+      continue;
     }
-    cout << it->add <<" "<< it->data <<" "<< it->next << endl;
+    v2[i].next = v2[i-1].add;
+    cout << v2[i].add <<" "<< v2[i].data <<" "<< v2[i].next << endl;
+  }
+  if (n-k >=k) {
+    for(int i = n - 1; i >= k; i--) {
+      if (i == k) {
+        v2[i].next = "-1";
+      }
+      v2[i].next = v2[i-1].add;
+      cout << v2[i].add <<" "<< v2[i].data <<" "<< v2[i].next << endl;
+    }
+  } else {
+    for(int i = k; i < n; i++) {
+      cout << v2[i].add <<" "<< v2[i].data <<" "<< v2[i].next << endl;
+    }
   }
   return 0;
 }
