@@ -1,16 +1,24 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
+#include<iostream>
+#include<algorithm>
 using namespace std;
-int main(int argc, char const *argv[]) {
-  int N, P;
-  cin >> N >> P;
-  std::vector<int> v;
-  for(int i = 0; i < N; i++) {
-    cin >> v[i];
-  }
-  sort(v.begin(), v.end());
-  int min = v[0], max = v[N-1];
-  // max <= min*p
-  return 0;
+const int N = 100005;
+int a[N];
+int main()
+{
+    long long n, p, maxlength = 0;
+    cin >> n >> p;
+    for (int i = 0; i != n; i++)
+        cin >> a[i];
+    sort(a, a + n);
+    for (long i = 0; i < n; i++)
+    {
+        for (long j = i + maxlength; j < n; j++)
+        {
+            if (a[j] > a[i] * p)
+                break;
+            maxlength++;
+        }
+    }
+    cout << m ;
+    return 0;
 }
